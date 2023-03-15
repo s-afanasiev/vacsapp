@@ -11,7 +11,7 @@ function main(){
 }
 
 function run_http_server(){
-	const hostname = 'localhost';
+	const hostname = 'capable-parfait-f97c22.netlify.app';
 	const port = 80;
 	const server = http.createServer((req, res) => {
 		handle_request_test(req, res);
