@@ -549,7 +549,11 @@ function xml_http_request(URL, body, method, callback){
 	xhr.onload = function() {
 		//alert(`Загружено: ${xhr.status} ${xhr.response}`);
 		console.log(`Загружено: ${xhr.status} ${xhr.response}`);
-		callback(null, xhr.response);
+		if(xhr.status == 200){
+			callback(null, xhr.response);
+		}else{
+			callback(xhr.status);
+		}
 	};
 
 	xhr.onerror = function() { 
