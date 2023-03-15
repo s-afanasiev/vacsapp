@@ -14,7 +14,7 @@ function run_http_server(){
 	const hostname = 'localhost';
 	const port = 80;
 	const server = http.createServer((req, res) => {
-		handle_request(req, res);
+		handle_request_test(req, res);
 	});
 
 	server.listen(port, hostname, () => {
@@ -22,6 +22,12 @@ function run_http_server(){
 	});
 }
 
+function handle_request_test(request, response){
+	let parts = urlutils.parse(request["url"], true);
+	let url = parts.pathname; /* "/" | "/rar_login_ui.js" | "/rar_ui.js" | "ajax" | "file" | ... */
+	response.statusCode = 200;
+	response.end(url+" was requested")
+}
 function handle_request(request, response){
 	let parts = urlutils.parse(request["url"], true);
 	let url = parts.pathname; /* "/" | "/rar_login_ui.js" | "/rar_ui.js" | "ajax" | "file" | ... */
