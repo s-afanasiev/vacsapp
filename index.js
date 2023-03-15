@@ -1,6 +1,7 @@
 const http = require('http');
 const net = require('net');
 const fs = require('fs');
+const os = require('os');
 const { URL } = require('url');
 const urlutils		= require('url');
 
@@ -11,7 +12,10 @@ function main(){
 }
 
 function run_http_server(){
-	const hostname = 'capable-parfait-f97c22.netlify.app';
+	//const ip = process.env.IP;
+	const host = os.hostname();
+	console.log("host=",host);
+	const hostname = host;
 	const port = 80;
 	const server = http.createServer((req, res) => {
 		handle_request_test(req, res);
